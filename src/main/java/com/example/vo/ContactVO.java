@@ -1,25 +1,19 @@
-package com.example.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
+package com.example.vo;
 
 import java.util.Map;
 
-
-@Document(indexName = "contacts", type = "contact")
-public class Contact {
-    @Id
+public class ContactVO {
     private String id;
     private String name;
     private String company;
     private boolean favorite;
     private String smallImageURL;
     private String largeImageURL;
-    public Contact(){}
+    private Map<String, String> phone;
+    private Map<String, String> address;
 
-    public Contact(String id, String name, String company, boolean favorite, String smallImageURL, String largeImageURL,
-                   Map<String, String> phone, Map<String, String> address) {
-        this.id = id;
+    public ContactVO(String name, String company, boolean favorite, String smallImageURL, String largeImageURL,
+                     Map<String, String> phone, Map<String, String> address, String id) {
         this.name = name;
         this.company = company;
         this.favorite = favorite;
@@ -27,6 +21,11 @@ public class Contact {
         this.largeImageURL = largeImageURL;
         this.phone = phone;
         this.address = address;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getId() {
@@ -35,10 +34,6 @@ public class Contact {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -91,22 +86,5 @@ public class Contact {
 
     public void setAddress(Map<String, String> address) {
         this.address = address;
-    }
-
-    private Map<String, String> phone;
-    private Map<String, String> address;
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", company='" + company + '\'' +
-                ", favorite=" + favorite +
-                ", smallImageURL='" + smallImageURL + '\'' +
-                ", largeImageURL='" + largeImageURL + '\'' +
-                ", phone=" + phone +
-                ", address=" + address +
-                '}';
     }
 }

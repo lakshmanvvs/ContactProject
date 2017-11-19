@@ -3,6 +3,7 @@ package com.example.service;
 
 import com.example.model.Contact;
 import com.example.repository.ContactRepository;
+import com.example.vo.ContactVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,11 @@ public class ContactService implements IcontactService {
 
     @Override
     public Contact save(Contact contact) {
-        return null;
+        return contactRepository.save(contact);
     }
 
     @Override
-    public void delete(Contact contact) {
+    public void delete(ContactVO contact) {
 
     }
 
