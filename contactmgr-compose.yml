@@ -1,0 +1,31 @@
+version: '2'
+services:
+  contact-manager:
+    image: contact-mgr:latest
+    restart: on-failure:3
+    ports:
+      - 9199:9199
+    restart: on-failure:3
+    networks:
+      - monitor-net
+    environment:
+      ES_URL: cm-elasticsearch
+      ES_PORT: 9300
+    links:
+      - cm-elasticsearch
+  cm-elasticsearch:
+    image: elasticsearch:2.4
+    environment:
+       bootstrap.memory_lock: "true"
+       http.port: 9200
+       transport.tcp.port: 9300
+    networks:
+      - monitor-net
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+networks:
+  monitor-net:
+    driver: bridge
