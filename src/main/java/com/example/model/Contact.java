@@ -43,7 +43,7 @@ public class Contact {
      * @param birthdate     the birthdate
      */
     public Contact(String id, String name, String company, boolean favorite, String smallImageURL, String largeImageURL,
-                   Map<String, String> phone, Map<String, String> address, String email, String website, String birthdate) {
+                   Map<String, String> phone, Map<String, Object> address, String email, String website, String birthdate) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -242,7 +242,7 @@ public class Contact {
      *
      * @return the address
      */
-    public Map<String, String> getAddress() {
+    public Map<String, Object> getAddress() {
         return address;
     }
 
@@ -251,12 +251,12 @@ public class Contact {
      *
      * @param address the address
      */
-    public void setAddress(Map<String, String> address) {
+    public void setAddress(Map<String, Object> address) {
         this.address = address;
     }
 
     private Map<String, String> phone;
-    private Map<String, String> address;
+    private Map<String, Object> address;
 
     @Override
     public String toString() {
